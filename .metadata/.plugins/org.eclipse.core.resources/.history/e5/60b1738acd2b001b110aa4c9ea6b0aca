@@ -1,0 +1,23 @@
+import java.util.HashMap;
+
+/*
+Given an array, find the number of Arithmetic subsequences that are possible from it.
+Arithmetic subsequence is a subsequence of length greater than or equal to 3 and is an arithmetic progression.
+
+Eg:
+I/P: [2,4,6,8,10]
+O/P: 7
+(sequences -> [2,4,6],[4,6,8],[6,8,10],[2,4,6,8],[4,6,8,10],[2,4,6,8,10],[2,6,10] )
+
+*/
+
+public class arithmeticSubsequence {
+	public static void main(String[] args) {
+		int[] arr = {2,4,6,8,10};
+		
+		HashMap<Integer, HashMap<Integer, Integer>> hs = new HashMap<>();
+		
+		
+		
+	}
+}

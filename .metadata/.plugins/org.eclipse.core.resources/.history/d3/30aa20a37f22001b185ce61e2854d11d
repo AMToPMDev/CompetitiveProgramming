@@ -1,0 +1,67 @@
+package graph;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+/*
+Given a graph, find the bridges in it.
+
+A bridge is an edge when removed will increase number of connected components.
+*/
+
+public class findBridges {
+	static List<Integer>[] li = new ArrayList[101];
+	static int[] visited = new int[101];
+	static int[] low = new int[101];
+	static int[] in = new int[101];
+	static int timer = 0;
+	
+	public static void dfs(int curr, int parent) {
+		visited[curr] = 1;
+		in[curr] = timer;
+		low[curr] = timer;
+		timer++;
+		
+		for(int child: li[curr]) {
+			if(child == parent) continue;
+			
+			if(visited[child] == 1) {
+				// This is a back edge
+				low[curr] = Math.min(low[curr], in[child]);
+			}
+			else {
+				// This is a forward edge
+				dfs(child, curr);
+				
+				if(in[curr] < low[child]) {
+					System.out.println(child+"-"+curr+" is a bridge");
+				}
+				
+				low[curr] = Math.min(low[curr], low[child]);
+			}
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int n = 4;
+		int edges = 4;
+		
+		for(int i=1; i<=n; i++) {
+			li[i] = new ArrayList();
+		}
+		
+		while(edges > 0) {
+			int a = s.nextInt();
+			int b = s.nextInt();
+			
+			li[a].add(b);
+			li[b].add(a);
+			edges--;
+		}
+		
+		dfs(1, 0);
+	}
+}

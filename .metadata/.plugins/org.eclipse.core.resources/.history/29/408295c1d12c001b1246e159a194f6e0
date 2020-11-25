@@ -1,0 +1,17 @@
+package graph;
+
+/*
+Disjoint Set is a Data Structure which is used to perform three operations:
+1. Make Set
+2. Find Set
+3. Merge Set
+
+This Algorithm is used in Kruskal's Algorithm
+*/
+
+public class disjointSetDataStructure {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+}

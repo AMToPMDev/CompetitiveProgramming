@@ -1,0 +1,16 @@
+package graph;
+
+/*
+Given a weighted graph, find the shortest path from given node to all the other nodes.
+Use Dijkstra's Algorithm to achieve the following.
+
+Eg:
+
+
+*/
+
+public class dijkstraAlgoShortestPath {
+	public static void main(String[] args) {
+		
+	}
+}

@@ -1,0 +1,116 @@
+package graph;
+import java.util.*;
+
+/*
+Given a graph with weights on the edges, find Minimum Spanning Tree.
+Minimum Spanning Tree is a tree formed after removing some edges from graph such that it is
+still connected and sum of the edges is minimum compared to other possible solutions.
+ 
+*/
+class pairSort implements Comparator<Pair3> {
+
+	@Override
+	public int compare(Pair3 o1, Pair3 o2) {
+		System.out.println(".");
+		if(o2.w > o1.w) return 1;
+		else return -1;
+	}
+}
+
+class Pair3 {
+	int a,b,w;
+
+	public Pair3(int a, int b, int w) {
+		super();
+		this.a = a;
+		this.b = b;
+		this.w = w;
+	}
+}
+
+class DisjointSet {
+	HashMap<Integer, Node> map = new HashMap<>();
+	
+	public class Node {
+		int data;
+		Node parent;
+		int rank;
+	}
+	
+	public void makeSet(int data) {
+		Node node = new Node();
+		node.data = data;
+		node.parent = node;
+		node.rank=0;
+		
+		map.put(data, node);
+	}
+	
+	public boolean union(int data1, int data2) {
+		Node node1 = map.get(data1);
+		Node node2 = map.get(data2);
+		
+		Node parent1 = findSet(node1);
+		Node parent2 = findSet(node2);
+		
+		if(parent1 == parent2) {
+			return false;
+		}
+		
+		if(parent1.rank >= parent2.rank) {
+			parent1.rank = (parent1.rank==parent2.rank)?parent1.rank+1:parent1.rank;
+			parent2.parent = parent1;
+		}
+		else {
+			parent1.parent = parent2;
+		}
+		
+		return true;
+	}
+	
+	public Node findSet(Node node) {
+		Node parent = node.parent;
+		
+		if(parent == node) {
+			return parent;
+		}
+		node.parent = findSet(node.parent);
+		return node.parent;
+	}
+}
+
+public class kruskalAlgoForMST {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		DisjointSet ds = new DisjointSet();
+		
+		int n = s.nextInt();
+		int e = s.nextInt();
+		
+		for(int i=1; i<=n; i++) {
+			ds.makeSet(i);
+		}
+		
+		List<Pair3> li = new ArrayList<Pair3>();
+		
+		for(int i=0; i<e; i++) {
+			int a = s.nextInt();
+			int b = s.nextInt();
+			int w = s.nextInt();
+			
+			li.add(new Pair3(a, b, w));
+		}
+		
+		Collections.sort(li, new pairSort());
+		int sum = 0;
+		
+		for(Pair3 pair: li) {
+			System.out.println("a: "+pair.a+", b: "+pair.b+", w: "+pair.w);
+			
+			if(ds.union(pair.a, pair.b)) 
+				sum += pair.w;
+		}
+		
+		System.out.println(sum);
+	}
+}

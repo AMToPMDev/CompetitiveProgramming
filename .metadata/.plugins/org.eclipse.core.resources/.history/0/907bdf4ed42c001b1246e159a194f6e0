@@ -1,0 +1,45 @@
+package graph;
+
+import java.util.HashMap;
+
+/*
+Disjoint Set is a Data Structure which is used to perform three operations:
+1. Make Set
+2. Find Set
+3. Merge Set
+
+This Data Structure is used in Kruskal's Algorithm
+*/
+
+public class disjointSetDataStructure {
+	HashMap<Long, Node> map = new HashMap<>();
+	
+	class Node {
+		long data;
+		Node parent;
+		int rank;
+	}
+	
+	public void makeSet(long data) {
+		Node node = new Node();
+		node.data = data;
+		node.parent = node;
+		node.rank=0;
+		map.put(data, node);
+	}
+	
+	public void union(long data1, long data2) {
+		Node node1 = map.get(data1);
+		Node node2 = map.get(data2);
+		
+		Node parent1 = findSet(node1);
+		Node parent2 = findSet(node2);
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		
+
+	}
+}

@@ -1,0 +1,49 @@
+package graph;
+
+import java.util.*;
+
+/*
+Given a weighted graph, find the shortest path from given node to all the other nodes.
+Use Dijkstra's Algorithm to achieve the following.
+
+Eg:
+Input:
+6 9
+1 2 4
+1 6 2
+2 6 1
+2 3 5
+3 6 8
+3 5 3
+5 6 10
+3 4 6
+4 5 5
+
+Output:
+distance - {0, 3, 8, 14, 11, 2}
+*/
+
+public class dijkstraAlgoShortestPath {
+	public static class Pair {
+		int b, w;
+		
+		public Pair(int b, int w) {
+			this.b = b;
+			this.w = w;
+		}
+	}
+	
+	public static class sortPair implements Comparator<Pair> {
+		@Override
+		public int compare(Pair a, Pair b) {
+			if(b.w > a.w) return 1;
+			else return -1;
+		}
+	}
+	
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		
+		TreeSet<Pair> pt = new TreeSet<Pair>(new sortPair());
+	}
+}

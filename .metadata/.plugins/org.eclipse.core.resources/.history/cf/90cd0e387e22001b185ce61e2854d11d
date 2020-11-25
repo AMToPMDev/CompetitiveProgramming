@@ -1,0 +1,38 @@
+package graph;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+Given a graph, find the bridges in it.
+
+A bridge is an edge when removed will increase number of connected components.
+*/
+
+public class findBridges {
+	static List<Integer>[] li = new ArrayList[101];
+	static int[] visited = new int[101];
+	static int[] low = new int[101];
+	static int[] in = new int[101];
+	
+	
+
+	public static void main(String[] args) {
+		int n = 4;
+		int edges = 4;
+		
+		for(int i=1; i<=n; i++) {
+			li[i] = new ArrayList();
+		}
+		
+		while(edges > 0) {
+			li[a].add(b);
+			li[b].add(a);
+			edges--;
+		}
+		
+		
+
+	}
+
+}

@@ -1,0 +1,96 @@
+package graph;
+import java.util.*;
+
+/*
+Given a graph with weights on the edges, find Minimum Spanning Tree.
+Minimum Spanning Tree is a tree formed after removing some edges from graph such that it is
+still connected and sum of the edges is minimum compared to other possible solutions.
+ 
+*/
+class Pair3 {
+	int a,b,w;
+
+	public Pair3(int a, int b, int w) {
+		super();
+		this.a = a;
+		this.b = b;
+		this.w = w;
+	}
+
+	@Override
+	public String toString() {
+		return "Pair3 [a=" + a + ", b=" + b + ", w=" + w + "]";
+	}
+}
+
+class DisjointSet {
+	HashMap<Integer, Node> map = new HashMap<>();
+	
+	public class Node {
+		int data;
+		Node parent;
+		int rank;
+	}
+	
+	public void makeSet(int data) {
+		Node node = new Node();
+		node.data = data;
+		node.parent = node;
+		node.rank=0;
+		
+		map.put(data, node);
+	}
+	
+	public void union(int data1, int data2) {
+		Node node1 = map.get(data1);
+		Node node2 = map.get(data2);
+		
+		Node parent1 = findSet(node1);
+		Node parent2 = findSet(node2);
+		
+		if(parent1 == parent2) {
+			return;
+		}
+		
+		if(parent1.rank >= parent2.rank) {
+			parent1.rank = (parent1.rank==parent2.rank)?parent1.rank+1:parent1.rank;
+			parent2.parent = parent1;
+		}
+		else {
+			parent1.parent = parent2;
+		}
+	}
+	
+	public Node findSet(Node node) {
+		Node parent = node.parent;
+		
+		if(parent == node) {
+			return parent;
+		}
+		node.parent = findSet(node.parent);
+		return node.parent;
+	}
+}
+
+public class kruskalAlgoForMST {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		DisjointSet ds = new DisjointSet();
+		
+		int n = s.nextInt();
+		int e = s.nextInt();
+		
+		for(int i=1; i<=n; i++) {
+			ds.makeSet(i);
+		}
+		
+		Pair[] pairs = new Pair[e];
+		
+		for(int i=0; i<e; i++) {
+			int a = s.nextInt();
+			int b = s.nextInt();
+			int w = s.nextInt();
+			
+		}
+	}
+}

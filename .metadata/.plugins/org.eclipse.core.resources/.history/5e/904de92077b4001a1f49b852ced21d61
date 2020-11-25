@@ -1,0 +1,14 @@
+/*
+Implement Rabin Karp Algorithm for Pattern matching in a string.
+
+*/
+public class RabinKarpAlgo {
+
+	public static void main(String[] args) {
+		String input = "askjfasdnfkjasndfkjabskksds";
+		String pattern = "abs";
+		
+		
+	}
+
+}

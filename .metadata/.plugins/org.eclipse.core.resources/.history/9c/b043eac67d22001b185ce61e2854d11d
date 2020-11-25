@@ -1,0 +1,24 @@
+package graph;
+
+import java.util.List;
+
+/*
+Given a graph, find the bridges in it.
+
+A bridge is an edge when removed will increase number of connected components.
+*/
+
+public class findBridges {
+	static List<Integer>[] li;
+	static int[] visited;
+	static int[] low;
+	static int[] in;
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

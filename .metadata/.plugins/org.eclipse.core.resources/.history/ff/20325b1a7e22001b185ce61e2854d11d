@@ -1,0 +1,57 @@
+package graph;
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Pair {
+    int min, max;
+    
+    public Pair(int min, int max) {
+        this.min = min;
+        this.max = max;
+    }   
+}
+
+class Solution {
+    int ans = Integer.MIN_VALUE;
+    
+    public Pair traverse(TreeNode root) {
+        if(root == null) return null;
+        
+        Pair ret = new Pair(root.val, root.val);
+        Pair left = traverse(root.left);
+        Pair right = traverse(root.right);
+        
+        if(left != null) {
+            ans = Math.max(ans, Math.abs(root.val - left.min));
+            ans = Math.max(ans, Math.abs(root.val - left.max));
+            ret.min = Math.min(ret.min, left.min);
+            ret.max = Math.max(ret.max, left.max);
+        }
+        if(right != null) {
+            ans = Math.max(ans, Math.abs(root.val - right.min));
+            ans = Math.max(ans, Math.abs(root.val - right.max));
+            ret.min = Math.min(ret.min, right.min);
+            ret.max = Math.max(ret.max, right.max);
+        }
+        
+        return ret;
+    }
+    
+    public int maxAncestorDiff(TreeNode root) {
+        traverse(root);
+        
+        return ans;
+    }
+}

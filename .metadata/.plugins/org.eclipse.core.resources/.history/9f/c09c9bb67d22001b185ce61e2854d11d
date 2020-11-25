@@ -1,0 +1,16 @@
+package graph;
+
+/*
+Given a graph, find the bridges in it.
+
+A bridge is an edge when removed will increase number of connected components.
+*/
+
+public class findBridges {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

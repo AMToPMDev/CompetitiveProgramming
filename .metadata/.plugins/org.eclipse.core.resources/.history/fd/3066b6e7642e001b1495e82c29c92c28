@@ -1,0 +1,21 @@
+import java.util.*;
+
+/*
+Given a certain amount of floors and given a certain amount of eggs what is the least amount of egg drops
+that I need to perform to find the pivotal where right below if the the egg drops it won't break and 
+right above that if the egg is dropped, the egg will break.
+Find that pivotal floor by breaking minimum number of eggs.
+
+
+
+
+*/
+
+public class eggDropProblem {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
